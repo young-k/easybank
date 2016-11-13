@@ -1,13 +1,10 @@
 from twilio.rest import TwilioRestClient
 
-account_sid = "ACdb871b2df01671e003111fbc751b75a2"
-auth_token = "96c561e908a9c0d97c2a4bf1380332f0"
+account_sid = "AC514060b3911159eb3a64f82778c386d8"
+auth_token = "2a7547e5c0424fa28a3f14bf83f3f9b7"
 
 def send_message(message):
     client = TwilioRestClient(account_sid, auth_token)
-    message = client.messages.create(to="+13477579097", from_="+16467988051",
+    message = client.messages.create(to="+17328060305", from_="+17322534903 ",
                                      body=message)
 
-if __name__ == "__main__":
-    send_message("This is a sample message.")
-    pass

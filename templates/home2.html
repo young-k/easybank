@@ -72,8 +72,13 @@
 
             <div class="row">
                 <ul class="tabs blue">
+                    <li class="tab col s3" id="onPress" class=active>
+                        <a href=#capitalone>
+                            <font color="white">Capital One</font>
+                        </a>
+                    </li>
                     <li class="tab col s3">
-                        <a href=#noaccount class=active>
+                        <a href=#noaccount>
                             <font color="white">No Account?</font>
                         </a>
                     </li>
@@ -86,6 +91,62 @@
             </div>
         </div>
     </nav>
+
+    <div id="capitalone" class="col s12">
+        <div class="row">
+            <div class="col s3 offset-s1">
+                <br>
+                <h3 class="papercraft">Accounts:</h3>
+                {% for account in accounts %}
+                <div class="col s12">
+                    <div class="card-panel white top-border">
+                        <span class="black-text" style="font-size: medium;">
+                        {{account.name}}</br>({{account.account_number}})<br>
+                    </span>
+                        <span style="float: right; font-size: x-large;">${{account.balance}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="col s6 offset-s1">
+                <br>
+                <h3 class="papercraft">Suspicious Activity:</h3>
+                <ul class="collection">
+                    {% for s in suspicious %}
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">warning</i>
+                        <span class="title">Click "X" to dismiss, or the Warning sign to report.</span>
+                        <p><b>Amount:</b> ${{s.withdrawal}} <br> <b>{{s.date}}</b> from <b>{{s.description}}</b>
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="material-icons delete">clear</i><br><i class="material-icons report">report_problem</i></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <br>
+
+                <h3 class="papercraft">Recent Transactions: </h3>
+                <ul class="popout collapsible" data-collapsible="accordion">
+                    {% for transaction in transactions %}
+                    <li>
+                        {% if transaction.withdrawal == 0 %}
+                        <div class="collapsible-header"><i class="material-icons green-text">add</i><b>${{transaction.deposit}}</b>, {{transaction.date}}</div>
+                        {% else %}
+                        <div class="collapsible-header"><i class="material-icons red-text">remove</i><b>${{transaction.withdrawal}}</b>, {{transaction.date}}</div>
+                        {% endif %}
+                        <div class="collapsible-body">
+                            <p><b>Date:</b> {{transaction.date}} <br>
+                                <b>Description:</b> {{transaction.description}}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <br>
 
@@ -190,8 +251,6 @@
     </div>
 
 
-
-
     </div>
     <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
     <script>
@@ -207,7 +266,9 @@
                 // The Link module finished loading.
             },
             onSuccess: function(public_token, metadata) {
-                window.open("/home2", "_self");
+                // Send the public_token to your app server here.
+                // The metadata object contains info about the institution the
+                // user selected and the account ID, if selectAccount is enabled.
             },
             onExit: function(err, metadata) {
                 // The user exited the Link flow.

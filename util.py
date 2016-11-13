@@ -15,9 +15,10 @@ parses into separate lists
 """
 descriptions= [line[0] for line in lines if line[0] != ""]
 withdrawals = [float(line[1]) for line in lines if line[1] != ""]
-dates=[line[2] for line in lines if line[2] != ""]
-cities= [line[3] for line in lines if line[3] != ""]
-states= [line[4] for line in lines if line[4] != ""]
+deposits= [float(line[2]) for line in lines if line[2] != ""]
+dates=[line[3] for line in lines if line[3] != ""]
+cities= [line[4] for line in lines if line[4] != ""]
+states= [line[5] for line in lines if line[5] != ""]
 location=[]
 
 for x in range(0, len(cities)):
@@ -28,7 +29,7 @@ transaction= []
 def createTransaction(descriptions):
     counter =0
     for desc in descriptions:
-        transaction.append(desc +"+" + str(withdrawals[counter])+"+" +dates[counter] +"+" + location[counter])
+        transaction.append(desc +"+" + str(withdrawals[counter])+"+"+ str(deposits[counter])+"+" +dates[counter] +"+" + location[counter])
         counter+=1
 
 createTransaction(descriptions)
@@ -60,8 +61,8 @@ finds quantatitive oddities in withdrawals
 """
 def withdrawal_strange(lst):
     for trans in lst:
-        desc, withd, dates, loc= trans.split("+")
-        if (-1*float(withd)+median(withdrawals) > abs(std(withdrawals))):
+        desc, withd, dep,dates, loc= trans.split("+")
+        if (abs(float(withd)-median(withdrawals)) > std(withdrawals)):
             statStrange.append(trans)
 """
 find location oddities
@@ -77,7 +78,7 @@ def distanceList(lst):
 def loc_strange(lst):
     distanceList(location)
     for trans in lst:
-        desc, withd, dates,loc= trans.split("+")
+        desc, withd, dep, dates,loc= trans.split("+")
         geolocator= Nominatim()
         transLoc= geolocator.geocode(loc)
         coord=(transLoc.latitude, transLoc.longitude)
@@ -94,7 +95,7 @@ def frequency(lst):
     for loc in uniqueLocations:
         if (location.count(loc)==1):
             for trans in lst:
-                desc, withd, dates,loc2= trans.split("+")
+                desc, withd, dep, dates,loc2= trans.split("+")
                 if loc==loc2:
                     uniqueLocation.append(trans)
 
@@ -104,7 +105,7 @@ Finds strange categories based on profile
 def categories(lst):
     transportation=["Plane", "Air","Car","Train","Subway","Airpot","Airlines","Station","Cruise","Boat","Ship"]
     for trans in lst:
-        desc, withd, dates,loc2=trans.split("+")
+        desc, withd, dep,dates,loc2=trans.split("+")
         splitDesc= desc.split(" ")
         for buzzword in transportation:
             if buzzword in splitDesc:
@@ -116,17 +117,17 @@ transactionDictionary=[]
 All the algo calls and consolidation
 """
 uniqueTransactions=[]
-def consolidate(lst):
+def consolidate(lst): 
     transactionDictionary= []
     withdrawal_strange(lst)
     loc_strange(lst)
-    frequency(lst)
+    frequency(lst) 
     categories(lst)
     consolidatedList= statStrange+locStrange+categoryStrange+uniqueLocation+categoryStrange
     uniqueTransactions= list(set(consolidatedList))
     for trans in uniqueTransactions:
-            desc, withd, dates,loc=trans.split("+")
-            dict={'description': desc, 'withdrawal': withd, 'date': dates, 'location':loc}
+            desc, withd, dep,dates,loc=trans.split("+")
+            dict={'description': desc, 'withdrawal': withd, 'deposit': dep,'date': dates, 'location':loc}
             transactionDictionary.append(dict)
     return transactionDictionary
 
@@ -144,8 +145,8 @@ def transactionHistory(name):
     transactionDict=[]
     if name=="Don" or name=="Agnes":
         for trans in transaction:
-            desc, withd,dates,loc=trans.split("+")
-            dict={'description': desc, 'withdrawal': withd,'date': dates, 'location':loc}
+            desc, withd, dep,dates,loc=trans.split("+")
+            dict={'description': desc, 'withdrawal': withd, 'deposit': dep,'date': dates, 'location':loc}
             transactionDict.append(dict)
         return transactionDict
 
@@ -154,4 +155,6 @@ def weirdTransaction(name):
         return consolidate(transaction)
 
 if __name__ == "__main__":
+    print account("Don")
+    print transactionHistory("Don")
     print weirdTransaction("Don")

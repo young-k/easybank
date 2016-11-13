@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, request, redirect, url_for, session
-from twilio import twiml
+
 import database
 database.create_table()
 
@@ -9,11 +9,11 @@ suspiciousTransactions = util.weirdTransaction("Don")
 
 import msg
 
-msg.send_message("Thank you for signing up for Easy Bank. Weekly push notifications have been enabled. We hope you enjoy taking back your finances.")
+if not suspiciousTransactions == None:
+    msg.send_message("You have suspicious transactions. Please click the following link to review them.")
+else:
+    msg.send_message("You have no suspicious transactions. Your next update will be in a week from now.")
 
-for s in suspiciousTransactions:
-    if "Amazon Services-kindle" in s["description"]:
-        msg.send_message("We have found several suspicious transactions this week. Did you spend $"+ s["withdrawal"] + " on "+ s["description"] +"? Respond Y if you did. Respond N for more information.")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tk'
 
@@ -53,7 +53,7 @@ def signup():
     
 @app.route("/survey", methods= ['GET','POST'])
 def survey():
-    if request.method == 'POST':
+    print
         profileType= request.form['profileType']
         database.user_update(session['email'],profileType)
         return render_template('home.html')
@@ -64,6 +64,7 @@ def survey():
 def home():
     accounts = util.account("Don")
     transactions = util.transactionHistory("Don")
+    print suspiciousTransactions  
     for t in transactions:
         t['withdrawal'] = float(t['withdrawal'])
         t['deposit'] = float(t['deposit'])
@@ -76,35 +77,6 @@ def about():
 @app.route("/settings")
 def settings():
     return render_template("settings.html")
-    
-@app.route("/home2")
-def home2():
-    accounts = util.account("Don")
-    transactions = util.transactionHistory("Don")
-    for t in transactions:
-        t['withdrawal'] = float(t['withdrawal'])
-        t['deposit'] = float(t['deposit'])
-    return render_template("home2.html", accounts=accounts, transactions=transactions, suspicious=suspiciousTransactions)
-
-@app.route("/sms", methods=['GET', 'POST'])
-def incoming_sms():
-    """Send a dynamic reply to an incoming text message"""
-    # Get the message the user sent our Twilio number
-    body = request.values.get('Body', None)
-
-    # Start our TwiML response
-    resp = twiml.Response()
-
-    # Determine the right reply for this message
-    if body == 'Y':
-        resp.message("Excellent. We will remember transactions like this in the future.")
-    elif body == 'N':
-        resp.message("A $31.56 transaction was made in Seattle, WA on October 26, 2016. It was made towards Amazon Services-kindle.")
-
-    return str(resp)
-
-if __name__ == "__main__":
-    app.run(debug=True)
     
 if __name__ == "__main__":
     app.debug = True
