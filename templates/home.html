@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!-- Materialize Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--Import materialize.css-->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <link type="text/css" rel="stylesheet" href="../static/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../static/styles.css" media="screen,projection" />
+    <title>Home - Easy Bank</title>
+
+    <style>
+        .tabs {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        
+        nav .brand-logo {
+            color: white;
+        }
+        
+        .top-border {
+            border-style: solid;
+            border-color: #2196f3;
+            border-width: 5px 0px 0px 0px;
+            padding-bottom: 50px;
+        }
+        
+        .btn-block {
+            background: #2196f3;
+        }
+        
+        .btn-block:hover {
+            background-color: #0d47a1;
+            color: white;
+        }
+        
+        .card {
+            margin: 20px 2px 20px 2px;
+        }
+        
+        table {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body id="home">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <nav class="nav-extended">
+        <div class="nav-wrapper blue">
+            <font color="white">
+                <a href="home" class="brand-logo">&nbsp; &nbsp; &nbsp; &nbsp;Easy Bank</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="settings">Settings</a></li>
+                    <li><a href="help">Help</a></li>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </ul>
+            </font>
+
+            <ul class="tabs blue">
+                <li class="tab">
+                    <a class="active" href=#capitalone>
+                        <font color="white">Capital One</font>
+                    </a>
+                </li>
+                <li class="tab">
+                    <a href=#noaccount>
+                        <font color="white">No Account?</font>
+                    </a>
+                </li>
+                <li class="tab">
+                    <a href=#addaccount id="linkButton">
+                        <font color="white">Add Account</font>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="capitalone" class="col s12">
+        <div class="row">
+            <div class="col s3 offset-s1">
+                <br> {% for account in accounts %}
+                <div class="col s12">
+                    <div class="card-panel white top-border">
+                        <span class="black-text" style="font-size: medium;">
+                        {{account.name}}</br>({{account.account_number}})<br>
+                    </span>
+                        <span style="float: right; font-size: x-large;">${{account.balance}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="col s6 offset-s1">
+                <h4>
+                    <font color=#AB433F>
+                        ALERT
+                    </font>
+                </h4>
+
+                <div container>
+                    <div class="col s12 m12">
+                        <div class="card red lighten-3">
+                            <div class="card-content black-text">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <div class="activator">
+                                        <center>
+                                        <h4>
+                                            Warning 1
+                                        </h4>
+                                        </center>
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-title activator grey-text text-darken-4">Warning</span>
+                                        </div>
+                                            <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Warning1<i class="material-icons right">close</i></span>
+                                            <p>Did you make a payment on
+                                            <b>10/29,2016</b> to <b>Harrison, New York</b> for the amount of <b>-$67.12</b> ?</p>
+                                        
+                                        <center>
+                                            <div class="row">
+                                                <a href="home"class="waves-effect waves-light btn white">
+                                                    <font color=b lack>Yes</font>
+                                                </a>
+                                                <a href="home" class="waves-effect waves-light btn white">
+                                                    <font color=black>No</font>
+                                                </a>
+                                            </div>
+                                        </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <div class="card red lighten-3">
+                                    <div class="card-content black-text">
+                                        <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+
+                                        <form action="#">
+                                            <div class="row">
+                                                <br>
+                                                <p>
+                                                    <input name="group1" type="radio" id="test1" />
+                                                    <label for="test1"><font color= black>I did do this</font></label>
+                                                </p>
+                                                <p>
+                                                    <input name="group1" type="radio" id="test2" />
+                                                    <label for="test2"><font color= black>I did not do this</font></label>
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <div class="card red lighten-3">
+                                    <div class="card-content black-text">
+                                        <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+                                        <form action="#">
+                                            <div class="row">
+                                                <br>
+                                                <p>
+                                                    <input name="group2" type="radio" id="test3" />
+                                                    <label for="test3"><font color= black>I did do this</font></label>
+                                                </p>
+                                                <p>
+                                                    <input name="group2" type="radio" id="test4" />
+                                                    <label for="test4"><font color= black>I did not do this</font></label>
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <h4>Recent Transactions</h4>
+                        <hr>
+                        <br>
+
+                        <table class="bordered" id="boxTable">
+                            <thead>
+                                <tr>
+                                    <th data-field="date">Date</th>
+                                    <th data-field="name">Description</th>
+                                    <th data-field="amount">Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for transaction in transactions %}
+                                <tr>
+                                    <td>{{transaction.date}}</td>
+                                    <td>{{transaction.description}}</td>
+                                    {% if transaction.withdrawal > 0 %}
+                                    <td>${{transaction.withdrawal}}</td>
+                                    {% else %}
+                                    <td>${{transaction.withdrawal}}</td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+</div>
+</div>
+
+            <div id="noaccount" class="col s12">
+                <center>
+                    <h5>
+                        <font color=black>
+                            No Account? <b>No Problem.</b>
+                        </font>
+                    </h5>
+                    <h6>
+                        Select your bank provider to create an online account.
+                    </h6>
+                </center>
+
+                <div class="row">
+
+                    <br>
+
+                    <div class="col s2 m4">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="https://www.capitalone.com/"><img src="../static/capitalonelogo.png" width="2"></a>
+
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><center>Capital One</center></span>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Capital One<i class="material-icons right">close</i></span>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="https://chase.com/">
+                                    <img class="activator" src="../static/chaselogo.png">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4 activator"><center>Chase</center></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col s6 m4">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="https://tdbank.com">
+                                    <img src="../static/tdbanklogo.png">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4 activator"><center>TD Bank</center></span>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="https://bankofamerica.com">
+                                    <img class="activator" src="../static/boalogo.png">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4 activator"><center>Bank of America</center></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col s9 m4">
+
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="https://citibank.com">
+                                    <img src="../static/citibanklogo.png" class="bankLogos">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4 activator"><center>Citi Bank</center></span>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="https://schwab.com">
+                                    <img src="../static/cslogo.png" class="bankLogos">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4 activator"><center>Charles Schwab</center></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+        <script>
+            var linkHandler = Plaid.create({
+                env: 'tartan',
+                clientName: 'Client Name',
+                key: 'test_key',
+                product: 'auth',
+                // To use Link with longtail institutions on Connect, set the
+                // 'longtail' option to true:
+                // longtail: true,
+                onLoad: function() {
+                    // The Link module finished loading.
+                },
+                onSuccess: function(public_token, metadata) {
+                    // Send the public_token to your app server here.
+                    // The metadata object contains info about the institution the
+                    // user selected and the account ID, if selectAccount is enabled.
+                },
+                onExit: function(err, metadata) {
+                    // The user exited the Link flow.
+                    if (err != null) {
+                        // The user encountered a Plaid API error prior to exiting.
+                    }
+                    // metadata contains information about the institution
+                    // that the user selected and the most recent API request IDs.
+                    // Storing this information can be helpful for support.
+                }
+            });
+
+            // Trigger the standard institution select view
+            document.getElementById('linkButton').onclick = function() {
+                linkHandler.open();
+            };
+        </script>
+</body>
+
+</html>

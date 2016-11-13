@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../static/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../static/styles.css" media="screen,projection" />
+    <title>Sign Up</title>
+    
+    <style>  
+    nav ul li a{
+      color: #2196f3;
+    }    
+    </style>
+</head>
+
+<body id="backgroundImage">
+    <br>
+    <br>
+    
+    
+    <div class="row">
+        <div class="col s4 offset-s4" id="box">
+        <font color = #2196f3>
+            <a href= "/">
+                <h3 class="header center"><strong>Easy Bank</strong></h3>
+            </a>
+        </font>
+        
+        <font color = black>
+            <h5 class="header center"><strong>Get Protected Today</strong></h5>
+        </font>
+        <br>
+            <form method="POST" action="/signup">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="first_name" type="text" class="validate">
+                        <label class="active" for="first_name">First Name</label>
+                    </div>
+                    
+                    <div class="input-field col s6">
+                        <input name="last_name" type="text" class="validate">
+                        <label class="active" for="last_name">Last Name</label>
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="input-field col s12">
+                        <input name="phoneNumber" type="text" class="validate">
+                        <label class="active" for="phoneNumber">Phone Number</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="email" type="text" class="validate">
+                        <label class="active" for="email">Email</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="password" type="password" class="validate">
+                        <label class="active" for="password">Password</label>
+                    </div>
+                </div>
+                
+                <div class = "row">
+                    <font color = "gray">
+                    <p class = "header center">
+                       Already have an account?
+                        <a href= "login">Log In Here</a>
+                    </p>
+                    </font>
+                </div>
+                
+                
+                <div class="row">
+                    <center><button class="waves-effect waves-light btn blue" type="submit" name="action">Sign Up</center>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/materialize.min.js"></script>
+</body>
+
+</html>

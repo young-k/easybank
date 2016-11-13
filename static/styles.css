@@ -1,0 +1,82 @@
+#backgroundImage {
+    background-image: url("./background2.png");
+    background-repeat: no-repeat;
+}
+
+#about {
+    background-image: url("./background3.png");
+    background-repeat:no-repeat;
+}
+
+#survey {
+    background-image: url("./background4.png");
+    background-repeat:no-repeat;
+}
+#box {
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+#boxWarning {
+    background-color:white;
+    border-style: solid;
+    border-width: 4px 0px 4px 0px;
+    border-radius: 2px;
+    border-color: red;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#boxPay {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: blue;
+}
+
+#boxText {
+    border-radius:10px;
+    border-style:solid;
+    border-color: black;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left: 10px;
+    padding-right:10px;
+}
+
+#boxButton {
+    background-color: gray;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+#boxCard{
+    border-radius:10px;
+    border-style:solid;
+    border-color:black;
+    border-width:2px;
+}
+
+#home {
+    background-color: #F7F6F3;
+}
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    border-color: black;
+}
+
+#boxTable {
+    background-color:white;
+}
+
+#cardBG {
+    background-color: #F2DEDE;
+}

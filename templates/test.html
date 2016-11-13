@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Card Flipper</title>
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+    body{font-family: 'Lato', sans-serif;}
+    .container{
+    width:400px;height:300px;
+    position: relative;
+    perspective: 800px;
+    margin:0 auto;
+    }
+    .card{
+    text-align:center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    }
+    .card h3{color:#fff;}
+    .card p{color:#fff;font-family: 'Lato', sans-serif;font-weight:300;}
+    .card:hover .front {
+    transform: rotateY(-180deg);
+    }
+    .card:hover .back {
+    transform: rotateY(0deg);
+    }
+    .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; backface-visibility: hidden; transition: 0.5s;
+    }
+    .face.front{
+    background:#000;
+    transform: rotateY(0deg);
+    }
+    .face.back {
+    display: block;
+    transform: rotateY(180deg);
+    box-sizing: border-box;
+    padding: 20px;
+    color: white;
+    text-align: left;
+    background-color: #333;
+    }
+    .card a.btn.btn-block{display:block;}
+    .card a.btn.btn-outline{background:transparent;border:1px solid #fff;border-radius:3px;padding:10px;color:#fff;text-align:center;text-decoration:none;}
+    .card a.btn.btn-outline:hover{background:#222;border:1px solid transparent;}
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="face front">
+        <img width="300px" src="logo.svg">
+      </div>
+      <div class="face back">
+        <h3>Web Ascender</h3>
+        <p>Web Ascender is an innovation services company that truly cares about your happiness and the success of your project. We are leaders in web development, mobile applications and internet marketing, but our team doesn't just make beautiful digital products. We successfully solve real problems for people and businesses.</p>
+        <a href="/Contact" class="btn btn-block btn-outline">Learn More &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

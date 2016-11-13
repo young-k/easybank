@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../static/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../static/styles.css" media="screen,projection" />
+    <title>Log In</title>
+    
+    <style>  
+    nav ul li a{
+      color: #2196f3;
+    }    
+    </style>
+</style>
+</head>
+
+<body id ="backgroundImage">
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div class="row">
+        <div class="col s4 offset-s4" id="box">
+        <font color = #2196f3>
+            <h3 class="header center"><strong>Easy Bank</strong></h3>
+        </font>
+        
+        <font color = black>
+            <h5 class="header center"><strong>Log In</strong></h5>
+        </font>
+        <br>
+            <form method="POST" action="/login">
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="email" type="text" class="validate">
+                        <label class="active" for="email">Email</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="password" type="password" class="validate">
+                        <label class="active" for="password">Password</label>
+                    </div>
+                </div>
+                
+                <br>
+                
+                <div class = "row">
+                    <font color = "gray">
+                    <p class = "header center">
+                        Don't have an account?
+                        <a href= "signup">Sign Up Here</a>
+                    </p>
+                    </font>
+                </div>
+                
+                <div class="row">
+                    <center><button class="waves-effect waves-light btn blue" type="submit" name="action">Log In</center>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/materialize.min.js"></script>
+</body>
+
+</html>
